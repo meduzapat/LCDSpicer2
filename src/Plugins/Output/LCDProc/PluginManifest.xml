@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LCDSpicer Version="2">
+	<Hardware
+		ScreenType="1"
+		ScreenSizeX=""
+		ScreenSizeY=""
+		ScreenColors="1"
+	/>
+	<Widgets>
+	</Widgets>
+	<buttons>
+	</buttons>
+	<icons>
+	</icons>
+</LCDSpicer>

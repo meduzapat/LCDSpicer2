@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LCDSpicer Version="2.1">
+	<Functions>
+		<Function Id="1" Name="CPU Information">
+			<SubFunction
+				Id="1"
+				Name="Name"
+				Description="The CPU name and model"
+				MinimumRefresh="0"
+				MaximumRefresh="0"
+				AcceptCustomValues="0"
+				DataType="2"
+				SymbolType=""
+				Image="CPU"
+			/>
+			<SubFunction
+				Id="2"
+				Name="CPU maximun speed"
+				Description="The maximun speed for the CPU"
+				MinimumRefresh="0"
+				MaximumRefresh="0"
+				AcceptCustomValues="0"
+				DataType="2"
+				SymbolType="Hertz"
+				Image="CPU"
+			/>
+			<SubFunction
+				Id="3"
+				Name="Current Speed"
+				Description="The current CPU/s or core/s running speed"
+				MinimumRefresh="10"
+				MaximumRefresh="60"
+				AcceptCustomValues="0"
+				DataType="2"
+				SymbolType="Hertz"
+				Image="CPU"
+			/>
+		</Function>
+		<Function Id="2" Name="CPU Load">
+			<SubFunction
+				Id="1"
+				Name="Total"
+				Description="The CPU load"
+				MinimumRefresh="8"
+				MaximumRefresh="40"
+				AcceptCustomValues="0"
+				DataType="4"
+				SymbolType=""
+				Image="gears"
+			/>
+			<SubFunction
+				Id="2"
+				Name="User"
+				Description="The user load"
+				MinimumRefresh="8"
+				MaximumRefresh="40"
+				AcceptCustomValues="0"
+				DataType="4"
+				SymbolType=""
+				Image="gears"
+			/>
+			<SubFunction
+				Id="3"
+				Name="Nice"
+				Description="The nice load"
+				MinimumRefresh="8"
+				MaximumRefresh="40"
+				AcceptCustomValues="0"
+				DataType="4"
+				SymbolType=""
+				Image="gears"
+			/>
+			<SubFunction
+				Id="4"
+				Name="System"
+				Description="The system load including IO waits and interups"
+				MinimumRefresh="8"
+				MaximumRefresh="40"
+				AcceptCustomValues="0"
+				DataType="4"
+				SymbolType=""
+				Image="gears"
+			/>
+			<SubFunction
+				Id="5"
+				Name="Idle"
+				Description="The Idle information"
+				MinimumRefresh="8"
+				MaximumRefresh="40"
+				AcceptCustomValues="0"
+				DataType="4"
+				SymbolType=""
+				Image="gears"
+			/>
+		</Function>
+		<Function Id="3" Name="System Information">
+			<SubFunction
+				Id="1"
+				Name="Kernel"
+				Description="The current in use kernel"
+				MinimumRefresh="0"
+				MaximumRefresh="0"
+				AcceptCustomValues="0"
+				DataType="2"
+				SymbolType=""
+				Image="terminal"
+			/>
+			<SubFunction
+				Id="2"
+				Name="Hostname"
+				Description="The computer name"
+				MinimumRefresh="36000"
+				MaximumRefresh="1080000"
+				AcceptCustomValues="0"
+				DataType="2"
+				SymbolType=""
+				Image="terminal"
+			/>
+			<SubFunction
+				Id="3"
+				Name="Domain Name"
+				Description="The primary domain name where this system is located"
+				MinimumRefresh="36000"
+				MaximumRefresh="1080000"
+				AcceptCustomValues="0"
+				DataType="2"
+				SymbolType=""
+				Image="terminal"
+			/>
+			<SubFunction
+				Id="4"
+				Name="Up Time"
+				Description="the elapsed time from the last boot"
+				MinimumRefresh="8"
+				MaximumRefresh="40"
+				AcceptCustomValues="0"
+				DataType="2"
+				SymbolType=""
+				Image="timeRunning"
+			/>
+			<SubFunction
+				Id="5"
+				Name="Distribution"
+				Description="The name and version of the running distribution"
+				MinimumRefresh="0"
+				MaximumRefresh="0"
+				AcceptCustomValues="0"
+				DataType="2"
+				SymbolType=""
+				Image="desktop"
+			/>
+		</Function>
+		<Function Id="4" Name="Memory Information">
+			<SubFunction
+				Id="1"
+				Name="Total Memory"
+				Description="The system total RWM memory (AKA RAM)"
+				MinimumRefresh="10"
+				MaximumRefresh="36000"
+				AcceptCustomValues="0"
+				DataType="2"
+				SymbolType="DigitalInformation"
+				Image="memory"
+			/>
+			<SubFunction
+				Id="2"
+				Name="Free Memory"
+				Description="The amount of system memory available"
+				MinimumRefresh="10"
+				MaximumRefresh="36000"
+				AcceptCustomValues="0"
+				DataType="2"
+				SymbolType="DigitalInformation"
+				Image="memory"
+			/>
+			<SubFunction
+				Id="3"
+				Name="Used Memory"
+				Description="The used system memory"
+				MinimumRefresh="10"
+				MaximumRefresh="36000"
+				AcceptCustomValues="0"
+				DataType="2"
+				SymbolType="DigitalInformation"
+				Image="memory"
+			/>
+			<SubFunction
+				Id="4"
+				Name="Free Memory Percent"
+				Description="The amount of system memory available as percentage"
+				MinimumRefresh="10"
+				MaximumRefresh="36000"
+				AcceptCustomValues="0"
+				DataType="4"
+				SymbolType=""
+				Image="memory"
+			/>
+			<SubFunction
+				Id="5"
+				Name="Used Memory Percent"
+				Description="The used system memory as percentage"
+				MinimumRefresh="10"
+				MaximumRefresh="36000"
+				AcceptCustomValues="0"
+				DataType="4"
+				SymbolType=""
+				Image="memory"
+			/>
+			<SubFunction
+				Id="6"
+				Name="Total SWAP"
+				Description="The system SWAP memory"
+				MinimumRefresh="10"
+				MaximumRefresh="36000"
+				AcceptCustomValues="0"
+				DataType="2"
+				SymbolType="DigitalInformation"
+				Image="swap"
+			/>
+			<SubFunction
+				Id="7"
+				Name="Free SWAP"
+				Description="The amount of SWAP available"
+				MinimumRefresh="10"
+				MaximumRefresh="36000"
+				AcceptCustomValues="0"
+				DataType="2"
+				SymbolType="DigitalInformation"
+				Image="swap"
+			/>
+			<SubFunction
+				Id="8"
+				Name="Used SWAP"
+				Description="The used SWAP"
+				MinimumRefresh="10"
+				MaximumRefresh="36000"
+				AcceptCustomValues="0"
+				DataType="2"
+				SymbolType="DigitalInformation"
+				Image="swap"
+			/>
+			<SubFunction
+				Id="9"
+				Name="Free SWAP percent"
+				Description="The amount of SWAP available as percentage"
+				MinimumRefresh="10"
+				MaximumRefresh="36000"
+				AcceptCustomValues="0"
+				DataType="4"
+				SymbolType=""
+				Image="swap"
+			/>
+			<SubFunction
+				Id="10"
+				Name="Used SWAP Percent"
+				Description="The used SWAP as percentage"
+				MinimumRefresh="10"
+				MaximumRefresh="36000"
+				AcceptCustomValues="0"
+				DataType="4"
+				SymbolType=""
+				Image="swap"
+			/>
+		</Function>
+	</Functions>
+	<Triggers>
+	</Triggers>
+</LCDSpicer>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LCDSpicer Version="2.1">
+	<Functions>
+		<Function Id="1" Name="GPU Information">
+			<SubFunction
+				Id="1"
+				Name="GPU Name"
+				Description="The GPU name"
+				MinimumRefresh="0"
+				MaximumRefresh="0"
+				AcceptCustomValues="0"
+				DataType="string"
+			/>
+			<SubFunction
+				Id="2"
+				Name="GPU Clock"
+				Description="The current GPU clock"
+				MinimumRefresh="10"
+				MaximumRefresh="50"
+				AcceptCustomValues="0"
+				DataType="string"
+			/>
+			<SubFunction
+				Id="3"
+				Name="GPU temp"
+				Description="Returns the GPU Temp"
+				MinimumRefresh="10"
+				MaximumRefresh="50"
+				AcceptCustomValues="0"
+				DataType="string"
+			/>
+			<SubFunction
+				Id="4"
+				Name="FPS Count"
+				Description="Returns the number of Frames per second"
+				MinimumRefresh="5"
+				MaximumRefresh="50"
+				AcceptCustomValues="0"
+				DataType="string"
+			/>
+		</Function>
+	</Functions>
+	<Triggers>
+	</Triggers>
+</LCDSpicer>

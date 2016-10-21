@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LCDSpicer Version="2.1">
+	<Functions>
+		<Function
+			Id="1"
+			Name="Date and Time"
+		>
+			<SubFunction
+				Id="1"
+				Name="Formated Date and Time"
+				Description="The current time different formats"
+				MinimumRefresh="5"
+				MaximumRefresh="20"
+				AcceptCustomValues="1"
+				DataType="2"
+				SymbolType=""
+				Image="analogClock"
+			/>
+			<SubFunction
+				Id="2"
+				Name="RAW time"
+				Description="Raw time information, use this when creating clocks"
+				MinimumRefresh="5"
+				MaximumRefresh="20"
+				AcceptCustomValues="0"
+				DataType="8"
+				SymbolType=""
+				Image="digitalClock"
+			/>
+		</Function>
+	</Functions>
+	<Triggers>
+	</Triggers>
+</LCDSpicer>

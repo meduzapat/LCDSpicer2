@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LCDSpicer Version="2.1">
+	<Functions>
+		<Function Id="1" Name="Users">
+			<SubFunction
+				Id="1"
+				Name="Current User"
+				Description="The current user"
+				MinimumRefresh="0"
+				MaximumRefresh="0"
+				AcceptCustomValues="0"
+				DataType="2"
+				SymbolType=""
+				Image="user"
+			/>
+			<SubFunction
+				Id="2"
+				Name="Users"
+				Description="A list of logged users"
+				MinimumRefresh="10"
+				MaximumRefresh="50"
+				AcceptCustomValues="0"
+				DataType="2"
+				SymbolType=""
+				Image="users"
+			/>
+			<SubFunction
+				Id="3"
+				Name="User Count"
+				Description="Returns the number of sessions the current user have open"
+				MinimumRefresh="10"
+				MaximumRefresh="50"
+				AcceptCustomValues="0"
+				DataType="2"
+				SymbolType=""
+				Image="user"
+			/>
+			<SubFunction
+				Id="4"
+				Name="Users Count"
+				Description="Returns the number of different users logged in"
+				MinimumRefresh="10"
+				MaximumRefresh="50"
+				AcceptCustomValues="0"
+				DataType="2"
+				SymbolType=""
+				Image="users"
+			/>
+		</Function>
+	</Functions>
+	<Triggers>
+	</Triggers>
+</LCDSpicer>

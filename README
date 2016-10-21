@@ -1,0 +1,23 @@
+To compile you will need the following tools:
+Essential:
+	build-essential
+	autoconf
+	libtool
+Libraries:
+	libtinyxml2-dev
+
+If documentation is needed:
+	doxygen
+	dot (for diagrams)
+
+Plugin Specific:
+	for LCDProc you will need the LCDProc package.
+
+Prepare tools:
+	./autogen.sh
+	./configure CXXFLAGS='-g0 -O3'
+
+then compile with:
+	make
+
+For more information please visit the LCDSpicer 2 website http://lcdspicer.medutech.net
