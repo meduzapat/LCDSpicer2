@@ -63,7 +63,7 @@ vector<string> LCDSpicer2::Explode(const string& text, const char delimiter, con
 		end = text.find(delimiter, start);
 		if (end == string::npos) {
 			temp.push_back(text.substr(start));
-			return std::move(temp);
+			break;
 		}
 		temp.push_back(text.substr(start, end - start));
 		start = end + 1;

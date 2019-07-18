@@ -25,8 +25,8 @@ using namespace LCDSpicer2;
 
 XMLHelper::XMLHelper(const string& fileName) {
 
-	if (LoadFile(fileName.c_str()) != tinyxml2::XML_NO_ERROR)
-		throw LCDError("Unable to read the file " + fileName);
+	if (LoadFile(fileName.c_str()) != tinyxml2::XML_SUCCESS)
+		throw LCDError("Unable to read the file " + fileName + " " + string(ErrorStr()));
 
 	root = RootElement();
 	if (not root or string(root->Name()) != "LCDSpicer")

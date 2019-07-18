@@ -31,10 +31,16 @@ using std::string;
 
 namespace LCDSpicer2 {
 
+/**
+ * To use LOG the variable logger need to be set with the Logger object
+ * @param msg_level
+ * @param message
+ */
 #define LOG(type, message) {			\
 	if (logger->isLogging(type))		\
 		logger->log(type, message);		\
 	}
+
 /**
  * Logger.
  *
@@ -44,16 +50,16 @@ class Logger {
 
 public:
 
-	static constexpr uint8_t NOLOG		= 0;
-	static constexpr uint8_t EMERGENCY	= 1;
-	static constexpr uint8_t ALERT		= 2;
-	static constexpr uint8_t CRITICAL	= 4;
-	static constexpr uint8_t ERROR		= 8;
-	static constexpr uint8_t WARNING	= 16;
-	static constexpr uint8_t NOTICE		= 32;
-	static constexpr uint8_t INFO		= 64;
-	static constexpr uint8_t DEBUG		= 128;
-	static constexpr uint8_t ALL		= (EMERGENCY | ALERT | CRITICAL | ERROR | WARNING | NOTICE | INFO | DEBUG);
+	static constexpr uint8_t NOLOG     = 0;
+	static constexpr uint8_t EMERGENCY = 1;
+	static constexpr uint8_t ALERT     = 2;
+	static constexpr uint8_t CRITICAL  = 4;
+	static constexpr uint8_t ERROR     = 8;
+	static constexpr uint8_t WARNING   = 16;
+	static constexpr uint8_t NOTICE    = 32;
+	static constexpr uint8_t INFO      = 64;
+	static constexpr uint8_t DEBUG     = 128;
+	static constexpr uint8_t ALL       = (EMERGENCY | ALERT | CRITICAL | ERROR | WARNING | NOTICE | INFO | DEBUG);
 
 	static Logger* getInstance();
 
@@ -70,10 +76,10 @@ public:
 
 	/**
 	 * The main log function to add log entries.
-	 * @param msg_level
+	 * @param level
 	 * @param[in] message
 	 */
-	static void log(uint8_t msg_level, const string& message);
+	static void log(uint8_t level, const string& message);
 
 	/**
 	 * In case that the logger need to be destroyed.

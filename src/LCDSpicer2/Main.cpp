@@ -37,10 +37,12 @@ Main::Main(const string& configFile) {
 
 	string configurationFile;
 
-	if (configFile.empty())
+	if (configFile.empty()) {
 		configurationFile = PACKAGE_CONF_DIR "/" PACKAGE_NAME ".conf";
-	else
+	}
+	else {
 		configurationFile = std::move(configFile);
+	}
 
 	// Get Configuration.
 	configurationHandler = new Configuration(configurationFile);
@@ -56,11 +58,13 @@ Main::Main(const string& configFile) {
 
 Main::~Main() {
 
-	for (auto pluginHandler : outputPluginHandlers)
+	for (auto pluginHandler : outputPluginHandlers) {
 		delete pluginHandler;
+	}
 
-	for (auto pluginHandler : inputPluginHandlers)
+	for (auto pluginHandler : inputPluginHandlers) {
 		delete pluginHandler;
+	}
 
 	LOG(Logger::INFO, "Program " PACKAGE_NAME " Terminated.");
 	Logger::terminate();
@@ -70,32 +74,36 @@ Main::~Main() {
 inline void Main::initialize(bool daemonize, const string& dataFile) {
 
 	if (daemonize) {
-		if (daemonized)
+		if (daemonized) {
 			throw Error("Already daemonized.");
+		}
 
 		LOG(Logger::DEBUG, "Daemonizing");
-		if (daemon(0, 0) == -1)
+		if (daemon(0, 0) == -1) {
 			throw Error("Unable to daemonize.");
+		}
 		LOG(Logger::DEBUG, "Daemonized");
 	}
 
 	// Load Data from data file.
 	DataLoader dataLoader(dataFile);
-	outputPluginHandlers	= dataLoader.getOutputPluginHandlers();
-	inputPluginHandlers		= dataLoader.getInputPluginHandlers();
-	inputPluginWork			= dataLoader.getRefreshWork();
+	outputPluginHandlers = dataLoader.getOutputPluginHandlers();
+	inputPluginHandlers  = dataLoader.getInputPluginHandlers();
+	inputPluginWork      = dataLoader.getRefreshWork();
 
 	int totalInputThreadsTemp = (configuration.find("InputThreads") != configuration.end()) ? configuration.at("InputThreads").getInt() : DEFAULT_INPUT_THREADS;
 	if (totalInputThreadsTemp == AUTO) {
 		uint total = 0;
-		for (auto work : inputPluginWork)
+		for (auto work : inputPluginWork) {
 			total += work.second.size();
+		}
 		totalInputThreadsTemp = (total * inputPluginHandlers.size()) / 10;
 		totalInputThreads = totalInputThreadsTemp ? totalInputThreadsTemp : 1;
 	}
 
-	for (auto inputPluginHandler : inputPluginHandlers)
+	for (auto inputPluginHandler : inputPluginHandlers) {
 		inputPluginHandler->cleanFunctions();
+	}
 
 	delete configurationHandler;
 }
@@ -105,13 +113,15 @@ int Main::detect() {
 	auto configurationData = configurationHandler->getGroupSettings("Main");
 
 	string tempDir = (configurationData.find("TempDir") != configurationData.end()) and !configurationData.at("TempDir").getString().empty() ? configurationData.at("TempDir").getString() : DEFAULT_TEMP_DIR;
-	if (system(("mkdir -p " + tempDir).c_str()) == EXIT_FAILURE)
+	if (system(("mkdir -p " + tempDir).c_str()) == EXIT_FAILURE) {
 		throw Error("Unable to create the temporary directory");
+	}
 	tempDir.append("/detected.js");
 
 	FILE* pFile = fopen(tempDir.c_str(), "w");
-	if (not pFile)
+	if (not pFile) {
 		throw Error("Unable to open the js file (" + tempDir + ") to save contents.");
+	}
 
 	string oPath = PACKAGE_LIB_DIR OUTPUT_SUB_DIR;
 	string tempStr = "var availableOutputs={";
@@ -129,8 +139,9 @@ int Main::detect() {
 			delete outputPluginHandler;
 		}
 	}
-	if (not tempStr.empty() and tempStr[tempStr.size() - 1] == ',')
+	if (not tempStr.empty() and tempStr[tempStr.size() - 1] == ',') {
 		tempStr.resize(tempStr.size() - 1);
+	}
 	tempStr += "};\n";
 	fputs(tempStr.c_str(), pFile);
 
@@ -150,8 +161,9 @@ int Main::detect() {
 			delete inputPluginHandler;
 		}
 	}
-	if (not tempStr.empty() and tempStr[tempStr.size() - 1] == ',')
+	if (not tempStr.empty() and tempStr[tempStr.size() - 1] == ',') {
 		tempStr.resize(tempStr.size() - 1);
+	}
 	tempStr += "};\n";
 	fputs(tempStr.c_str(), pFile);
 
@@ -229,13 +241,15 @@ inline int Main::run() {
 
 	// Wait for workers to finish before close.
 	bool allGone = false;
-	while (!allGone) {
+	while (not allGone) {
 		allGone = true;
-		for (bool status : inputThreadStatus)
+		for (bool status : inputThreadStatus) {
 			allGone &= !status;
+		}
 
-		for (bool status : outputThreadStatus)
+		for (bool status : outputThreadStatus) {
 			allGone &= !status;
+		}
 
 		if (not allGone) {
 			LOG(Logger::DEBUG, "Waiting for threads to finish");
@@ -264,8 +278,9 @@ void Main::inputRefreshThread(int threadNumber, int& status) {
 		// Pick work.
 		updatingWork.lock();
 		workCopy.clear();
-		for (auto workPerPlugin : workToDo)
+		for (auto workPerPlugin : workToDo) {
 			workCopy.push_back(workPerPlugin.second);
+		}
 
 		updatingWork.unlock();
 
@@ -332,6 +347,8 @@ void Main::outputRefreshThread(int threadNumber, int& status, OutputPluginHandle
 
 /*
  * Main.
+ *
+ * Handles command line and runs the program.
  */
 int main(int argc, char **argv) {
 
@@ -405,8 +422,9 @@ int main(int argc, char **argv) {
 	Main program(configFile);
 
 	try {
-		if (detect)
+		if (detect) {
 			return program.detect();
+		}
 		program.initialize(daemonize, dataFile);
 	}
 	catch (Error& e) {

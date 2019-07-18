@@ -54,11 +54,5 @@ src/LCDSpicer2/lcdspicer2
 *.a
 
 # Compiled Documentation
-doc/doxygen_sqlite3.db
-doc/lcdspicer2.doxyfile
-doc/doxyfile.stamp
-doc/html
-doc/latex
-doc/xml
-
+doc/
 

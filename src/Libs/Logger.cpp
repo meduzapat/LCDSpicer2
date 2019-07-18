@@ -37,14 +37,16 @@ Logger::Logger(int logLevel) {
 
 	this->level = logLevel;
 
-	if (not logLevel)
+	if (not logLevel) {
 		return;
+	}
 
 	int level = 0;
-	for (uint8_t c = 0, b = 1; c < 8; c++, b <<= 1)
-		if (b & logLevel)
+	for (uint8_t c = 0, b = 1; c < 8; c++, b <<= 1) {
+		if (b & logLevel) {
 			level |= LOG_MASK(getSysLogLevel(b));
-
+		}
+	}
 	setlogmask(level);
 
 	openlog(identifier, LOG_CONS | LOG_PID | LOG_NDELAY, LOG_DAEMON);
@@ -56,10 +58,12 @@ Logger* Logger::getInstance() {
 
 Logger* Logger::getInstance(int logLevel) {
 
-	if (not instance)
+	if (not instance) {
 		instance = new Logger(logLevel);
-	else
+	}
+	else {
 		syslog(LOG_NOTICE, "The logger is already created, the new parameters will be ignored, use getInstance() instead.");
+	}
 
 	return instance;
 }
@@ -105,8 +109,9 @@ bool Logger::isLogging(uint8_t level) {
 }
 
 void Logger::log(uint8_t level, const string& message) {
-	if (isLogging(level))
+	if (isLogging(level)) {
 		syslog(getSysLogLevel(level), "%s", message.c_str());
+	}
 }
 
 void Logger::terminate() {
